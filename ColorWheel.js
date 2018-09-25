@@ -28,8 +28,10 @@ export class ColorWheel extends Component {
     }
   }
 
-  componentWillUpdate () {
-    this.setState({currentColor: this.props.initialColor});
+  componentWillUpdate(newProps) {
+    if (newProps.initialColor !== this.props.initialColor) {
+      this.forceUpdate(newProps.initialColor);
+    }
   }
 
   componentDidMount = () => {
