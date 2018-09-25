@@ -28,6 +28,10 @@ export class ColorWheel extends Component {
     }
   }
 
+  componentWillUpdate () {
+    this.setState({currentColor: this.props.initialColor});
+  }
+
   componentDidMount = () => {
     this._panResponder = PanResponder.create({
       onStartShouldSetPanResponderCapture: ({nativeEvent}) => {
@@ -201,7 +205,7 @@ export class ColorWheel extends Component {
         onLayout={nativeEvent => this.onLayout(nativeEvent)}
         style={[styles.coverResponder, this.props.style]}>
         <Image
-          style={[styles.img, 
+          style={[styles.img,
                   {
                     height: radius * 2 - this.props.thumbSize,
                     width: radius * 2 - this.props.thumbSize
